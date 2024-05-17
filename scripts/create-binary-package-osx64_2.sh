@@ -6,10 +6,10 @@ VERSION="0.1"
 PLATFORM="osx"
 ARC="64"
 
-QT_LIB_PATH="/Users/mehdi.kamar/stkpconnector"
-STKPCONNECT_PROJECT_PATH="/Users/mehdi.kamar/xp11-plugin-master"
+QT_LIB_PATH="/opt/homebrew/Cellar/qt@5/5.15.13_1/lib"
+STKPCONNECT_PROJECT_PATH="/Users/mehdi.kamar/xp11-plugin"
 PLUGIN_NAME="stkpconnector"
-PACKAGE_PATH="/Users/mehdi.kamar/xp11-plugin-master/stkpconnect-plugin/$PLUGIN_NAME"
+PACKAGE_PATH="/Users/mehdi.kamar/xp11-plugin/stkpconnect-plugin/$PLUGIN_NAME"
 
 # Show config
 echo " "
