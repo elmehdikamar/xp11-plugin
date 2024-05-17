@@ -50,8 +50,8 @@ void TcpClient::disconnectClient() {
         ref->disconnect(this);
         _refProvider->unsubscribeRef(ref);
     }
-    for(int but : _heldButtons)
-        _refProvider->buttonRelease(but);
+    for(QString but : _heldButtons)
+        _refProvider->command(but, stkpconnectCommandTypeEnd);
     _socket->disconnectFromHost();
     emit discoed(this);
     deleteLater();
@@ -142,30 +142,24 @@ void TcpClient::readClient() {
             }
         } else if(command == "key") {
             if(subLine.size() == 2) {
-                bool ok;
-                int keyId = subLine.value(1).toInt(&ok);
-                if(ok)
-                    _refProvider->keyStroke(keyId);
+                QString subCmd = subLine.value(1);
+                _refProvider->command(subCmd, stkpconnectCommandTypeOnce);
             } else {
                 stkpconnectWarning(QString("Invalid key command"));
             }
         } else if(command == "but") {
             if(subLine.size() == 2) {
-                bool ok;
-                int keyId = subLine.value(1).toInt(&ok);
-                if(ok) {
-                    _refProvider->buttonPress(keyId);
-                    _heldButtons.insert(keyId);
-                }
+                QString subCmd = subLine.value(1);
+                _refProvider->command(subCmd, stkpconnectCommandTypeBegin);
+                _heldButtons.insert(subCmd);
             } else {
                 stkpconnectWarning("Invalid but command");
             }
         } else if(command == "rel") {
             if(subLine.size() == 2) {
-                bool ok;
-                int keyId = subLine.value(1).toInt(&ok);
-                if(ok && _heldButtons.contains(keyId)) {
-                    _refProvider->buttonRelease(keyId);
+                QString subCmd = subLine.value(1);
+                if(_heldButtons.contains(subCmd)) {
+                    _refProvider->command(subCmd, stkpconnectCommandTypeEnd);
                 } else {
                     stkpconnectWarning("Invalid rel command, button not held");
                 }

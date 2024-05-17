@@ -6,7 +6,12 @@
             "compilerPath": "/usr/bin/gcc",
             "cStandard": "c11",
             "cppStandard": "gnu++14",
-            "intelliSenseMode": "clang-x64"
+            "intelliSenseMode": "clang-x64",
+            "includePath": [
+                "${default}",
+                "${workspaceFolder}/**",
+                "/opt/homebrew/Cellar/qt@5/5.15.13_1/lib/QtCore.framework/Versions/5/Headers"
+            ]
         }
     ],
     "version": 4

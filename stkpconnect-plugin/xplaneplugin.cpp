@@ -249,21 +249,6 @@ void XPlanePlugin::updateDataRef(DataRef *ref) {
     }
 }
 
-void XPlanePlugin::keyStroke(int keyid) {
-    DEBUG << keyid;
-    XPLMCommandKeyStroke(keyid);
-}
-
-void XPlanePlugin::buttonPress(int buttonid) {
-    DEBUG << buttonid;
-    XPLMCommandButtonPress(buttonid);
-}
-
-void XPlanePlugin::buttonRelease(int buttonid) {
-    DEBUG << buttonid;
-    XPLMCommandButtonRelease(buttonid);
-}
-
 void XPlanePlugin::changeDataRef(DataRef *ref)
 {
     if(!ref->isWritable()) {

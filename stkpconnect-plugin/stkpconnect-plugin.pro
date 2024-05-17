@@ -8,6 +8,8 @@ message("Building X-Plane plugin with SDK in $$XPLANE_SDK_PATH")
 
 # X-Plane SDK version. The example shows ALL can be 1 at the same time.
 # Defaults to SDK 3.0.0 (X-Plane 11)
+QMAKE_CXXFLAGS += -DPXLM401=1
+QMAKE_CXXFLAGS += -DXPLM400=1
 QMAKE_CXXFLAGS += -DXPLM300=1
 QMAKE_CXXFLAGS += -DXPLM210=1
 QMAKE_CXXFLAGS += -DXPLM200=1
@@ -64,7 +66,7 @@ unix:!macx {
 
 macx {
      message("Mac Platform")
-     DEFINES += APL=1 IBM=0 LIN=0 QT_NO_DEBUG QT_NO_DEBUG_OUTPUT
+     DEFINES += APL=1 IBM=0 LIN=0
      QMAKE_LFLAGS += -dynamiclib -fPIC
      # -flat_namespace -undefined warning <- not needed or recommended anymore.
 
@@ -72,7 +74,7 @@ macx {
      # The following line is only needed to build universal on PPC architectures.
      # QMAKE_MAC_SDK=/Devloper/SDKs/MacOSX10.4u.sdk
      # This line defines for wich architectures we build.
-     CONFIG += x86 ppc
+     # CONFIG += x86 ppc
      QMAKE_LFLAGS += -F$$XPLANE_SDK_PATH/Libraries/Mac
      QMAKE_CXXFLAGS += -fPIC
      LIBS += -framework XPLM
@@ -107,7 +109,7 @@ CONFIG(debug, debug|release) {
 }
 
 # Copy the built library to the correct x-plane plugin directory
-QMAKE_POST_LINK += $(MKDIR) $$XPLDIR ; $(COPY_FILE) debug/$(TARGET) $$XPLDIR/$$XPLFILE
+QMAKE_POST_LINK += $(MKDIR) $$XPLDIR ; $(COPY_FILE) $(TARGET) $$XPLDIR/$$XPLFILE
 
 SOURCES += main.cpp \
     xplaneplugin.cpp \

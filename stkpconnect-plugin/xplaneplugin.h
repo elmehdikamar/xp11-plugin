@@ -32,9 +32,6 @@ public: // DataRefProvider implementation
     virtual DataRef *subscribeRef(QString &name);
     virtual void unsubscribeRef(DataRef *ref);
     virtual void updateDataRef(DataRef *ref); // Update ref value from simulator
-    virtual void keyStroke(int keyid);
-    virtual void buttonPress(int buttonid);
-    virtual void buttonRelease(int buttonid);
     virtual void changeDataRef(DataRef *ref);
     virtual void command(QString &name, stkpconnectCommandType type);
     virtual bool loadSituation(QString sitFileLocation);

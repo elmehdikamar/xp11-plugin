@@ -10,7 +10,7 @@
   * Creates the TCP socket and manages client connections
   */
 // TCP port used to listen for connections
-#define STKPCONNECT_PORT 40303
+#define STKPCONNECT_PORT 51303
 // Network protocol, currently always 1
 #define STKPCONNECT_PROTOCOL 1
 // Feature revision, every time we add a new feature or bug fix, this should be incremented so that clients can know how old the plugin is

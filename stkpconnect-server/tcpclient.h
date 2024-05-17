@@ -47,7 +47,7 @@ private:
     QMap<DataRef*, QVector<int> > _refValueIA;
     QMap<DataRef*, int> _refValueI;
     QMap<DataRef*, QByteArray> _refValueB;
-    QSet<int> _heldButtons;
+    QSet<QString> _heldButtons;
     DataRefProvider *_refProvider;
     // Unsubscribe these refs after they have changed (used to implement "get" command)
     QVector<DataRef*> refsToUnsubscribeAfterChange();

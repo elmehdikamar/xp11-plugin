@@ -28,12 +28,6 @@ public:
     virtual void updateDataRef(DataRef *ref)=0;
     // Change ref value to simulator
     virtual void changeDataRef(DataRef *ref)=0;
-    // Cause a key stroke in simulator (X-Plane keyid)
-    virtual void keyStroke(int keyid)=0;
-    // Press (and hold) a button (X-Plane button id)
-    virtual void buttonPress(int buttonid)=0;
-    // Release a button (X-Plane button id)
-    virtual void buttonRelease(int buttonid)=0;
     // Run a named command
     virtual void command(QString &name, stkpconnectCommandType type)=0;
     //Load situation file from disk, relatively to simulator root folder
